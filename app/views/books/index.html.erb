@@ -1,19 +1,22 @@
-<body>
-
+<body class='<%= controller.controller_name %>' >
+<main>
  <h1>Books</h1>
 
   <div class="blog">
-    <div class="blog=heading">
-      <p>Title</p>
-      <p>body</p>
-     <p></p>
+    <div class="blog-heading">
+      <h4>Title</h4>
+      <h4>Body</h4>
+     <h4></h4>
     </div>
-    <div class="blog=main">
+    <div class="blog-main">
       <% @books.each do |book| %>
-        <p class="blog-title"><%=  book.title  %></p>
-        <p class="blog-body"><%=  book.body %></p>
-          <%= link_to "Destroy",book_path(@book), method: :delete %>
-          
+      <div class="blog-item">
+       <div> <p class="blog-title"><%=  book.title  %></p></div>
+        <div><p class="blog-body"><%=  book.body %></p></div>
+        <div> <%= link_to "Show", book_path(book.id) %>
+        <%= link_to "Edit", edit_book_path(book.id) %>
+        <%= link_to 'Destroy',book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %></div>
+         </div>
         <% end %>
         
     </div>
@@ -27,4 +30,9 @@
    <%= f.text_area :body %>
    <%= f.submit 'Create Book'%>
   <% end %>
+  
+  
+  <%= yield %>
+</main>
 </body>
+ 
