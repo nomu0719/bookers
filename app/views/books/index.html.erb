@@ -2,37 +2,41 @@
 <main>
  <h1>Books</h1>
 
-  <div class="blog">
+  <table class="blog">
     <div class="blog-heading">
-      <h4>Title</h4>
-      <h4>Body</h4>
+     <h4>Title</h4>
+     <h4>Body</h4>
      <h4></h4>
     </div>
     <div class="blog-main">
-      <% @books.each do |book| %>
+     <% @books.each do |book| %>
       <div class="blog-item">
-       <div> <p class="blog-title"><%=  book.title  %></p></div>
-        <div><p class="blog-body"><%=  book.body %></p></div>
-        <div> <%= link_to "Show", book_path(book.id) %>
+       <div "blog-title"> <%=  book.title  %></div>
+       <div class="blog-body"><%=  book.body %></div>
+       <div class="blog-button">
+        <%= link_to "Show", book_path(book.id) %>
         <%= link_to "Edit", edit_book_path(book.id) %>
         <%= link_to 'Destroy',book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %></div>
-         </div>
-        <% end %>
-        
+      </div>
+     <% end %>
     </div>
-    
-  </div>
-  <h2>New book</h2>
+  </table>
+  
+
+  <h3 class=new-book >New book</h3>
+ 
+   <%= render 'layouts/error_massages', book: @book %>
+  <div class = “field_with_errors”>
   <%= form_with model: @book, url:'/books', local:true do |f| %>
-   <h4>Title</h4>
+   <h5>Title</h5>
    <%= f.text_field :title %>
-   <h4>body</h4>
+   <h5>body</h5>
    <%= f.text_area :body %>
+   <br>
    <%= f.submit 'Create Book'%>
-  <% end %>
-  
-  
+   <% end %>
+  </div>
+
   <%= yield %>
 </main>
 </body>
- 

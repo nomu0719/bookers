@@ -30,9 +30,21 @@ main{
     flex-basis: 200px;
     max-width: 200px;
     overflow: hidden;
+    
 }
-.blog-title{
-    max-wadth: 200p
+.new-book{
+    margin: 15px 0;
+    padding: 15px 0;
+}
+
+.main-show > div{
+    display: flex;
+    margin-left: 20px;
+    padding: 20px;
+}
+.flash{
+    color: green;
+    margin-left: 40px;
 }
     
 }
